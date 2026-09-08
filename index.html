@@ -23,7 +23,7 @@
     @keyframes tickerBack { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     .ticker-track-back { display: flex; width: max-content; animation: tickerBack 22s linear infinite; }
     @keyframes writeIn { from { clip-path: inset(-18% 100% -18% 0); } to { clip-path: inset(-18% -6% -18% 0); } }
-    .write-line { clip-path: inset(-18% 100% -18% 0); animation: writeIn 1.5s cubic-bezier(.42,.04,.32,1) forwards; }
+    .write-line { clip-path: inset(-18% 100% -18% 0); animation: writeIn 2.9s cubic-bezier(.42,.04,.32,1) forwards; }
     .paper { position: absolute; left: -16px; right: -16px; top: 0; bottom: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 14px 34px rgba(0,0,0,.34); filter: url(#torn); }
     @keyframes slides { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
     .slides { display: flex; width: 400%; height: 100%; animation: slides 16s cubic-bezier(.75,0,.25,1) infinite; }
@@ -53,6 +53,10 @@
             font-family: 'Golos Text', -apple-system, 'Segoe UI', Verdana, sans-serif;
             position: relative; overflow: hidden; }
     img { max-width: 100%; }
+    /* рукописная фраза ждёт, пока страница догрузится: иначе на медленной
+       сети она успевает дописаться до того, как её увидят */
+    .write-line { animation-play-state: paused; }
+    body.loaded .write-line { animation-play-state: running; }
 </style>
 </head>
 <body>
@@ -79,8 +83,8 @@
     
     <div style="margin-top: 10px; text-align: center; font-size: 14px; line-height: 1.65; color: rgba(251,250,248,0.72); position: relative; padding: 0 14px;">пишет твоим голосом, под твою <br>аудиторию и нишу</div>
     <div style="margin-top: 20px; position: relative; text-align: center;">
-      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: .5s;">преврати свои сторис в сериал,</div>
-      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: 1.4s; margin-top: 4px;">от которого невозможно оторваться</div>
+      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: 1.4s;">преврати свои сторис в сериал,</div>
+      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: 3.9s; margin-top: 4px;">от которого невозможно оторваться</div>
     </div>
     <div style="margin-top: 26px; height: 54px; background: #FBFAF8; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #25252A; position: relative;">попробовать бесплатно</div>
     <div style="margin-top: 10px; text-align: center; font-size: 13px; color: rgba(251,250,248,0.5); position: relative;">3 сценария бесплатно, карта не нужна</div>
@@ -194,7 +198,7 @@
       </div>
       <div style="position: absolute; bottom: 2px; right: -8px; transform: rotate(3deg); background: #F9E4D4; border-radius: 6px; padding: 5px 12px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #C1573B;">@JULIYA.LIPA</div>
     </div>
-    <div style="margin-top: 20px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Я Юлия Липецкая, контент-маркетолог. Пять лет каждый день пишу сценарии сторис и прогревы для бизнесов и блогов в инстаграме.</div>
+    <div style="margin-top: 20px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Я Юлия Липецкая, контент-маркетолог. Пять лет каждый день пишу сценарии сторис и прогревы для бизнесов и блогов в Instagram.</div>
     <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">А ещё я занимаюсь нейросетями: сама собираю приложения и ботов, которые снимают с эксперта рутину. <span style="color: #E05E1F;"><b>stories мастер</b></span> родился ровно на стыке этих двух вещей — методики и технологии.</div>
     <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">За годы работы у меня собралась база: какие истории цепляют и как их рассказывать, чтобы человек сам дошёл до покупки. Эту методику я и загрузила в нейросеть.</div>
     <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Поэтому внутри приложения нейросеть пишет не как ей вздумается, а по моей системе.</div>
@@ -365,5 +369,11 @@
   </div>
 
 </div>
+<script>
+  // страховка: если load почему-то не сработал, письмо всё равно запустится
+  const go = () => document.body.classList.add('loaded');
+  window.addEventListener('load', go);
+  setTimeout(go, 6000);
+</script>
 </body>
 </html>
