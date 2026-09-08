@@ -20,6 +20,8 @@
     .hero-img { animation: kenburns 14s ease-in-out 1.2s infinite alternate; }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-track { display: flex; width: max-content; animation: ticker 20s linear infinite; }
+    @keyframes tickerBack { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .ticker-track-back { display: flex; width: max-content; animation: tickerBack 22s linear infinite; }
     @keyframes writeIn { from { clip-path: inset(-18% 100% -18% 0); } to { clip-path: inset(-18% -6% -18% 0); } }
     .write-line { clip-path: inset(-18% 100% -18% 0); animation: writeIn 1.5s cubic-bezier(.42,.04,.32,1) forwards; }
     .paper { position: absolute; left: -16px; right: -16px; top: 0; bottom: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 14px 34px rgba(0,0,0,.34); filter: url(#torn); }
@@ -88,14 +90,14 @@
     <div style="background: #E05E1F; padding: 14px 0; overflow: hidden; transform: rotate(-1deg); width: 420px; margin-left: -15px;">
       <div class="ticker-track">
         <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
-          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="color: #FBFAF8;">✳</span>
-          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="color: #FBFAF8;">✳</span>
-          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="color: #FBFAF8;">✳</span>
+          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
         </div>
         <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
-          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="color: #FBFAF8;">✳</span>
-          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="color: #FBFAF8;">✳</span>
-          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="color: #FBFAF8;">✳</span>
+          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
         </div>
       </div>
     </div>
@@ -103,7 +105,7 @@
     <div style="position: relative; margin-top: 44px; padding: 60px 22px 58px 22px;">
       <div class="paper"></div>
       <div style="position: relative;">
-        <div style="font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14;">это приложение для тебя, <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">если</span>:</div>
+        <div style="font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14;">это приложение для тебя, <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">если:</span></div>
         <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
           <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
             <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…открываешь сторис и <span style="background: #F9E4D4; padding: 1px 4px;">не знаешь, о чём писать</span></div>
@@ -130,30 +132,30 @@
       </div>
     </div>
 
-  <div style="background: #25252A; padding: 34px 20px 110px 20px;">
-    <div style="position: relative; width: 386px; margin: 8px -19px 0 -19px;">
+  <div style="background: #25252A; padding: 34px 20px 24px 20px;">
+    <div style="position: relative; width: 446px; margin: 8px -48px 0 -48px;">
       <div style="position: absolute; top: 14.5%; left: 16%; right: 16%; z-index: 3; text-align: center;">
-        <div style="transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 27px; font-weight: 700; line-height: 1; color: #E05E1F;">что умеет</div>
-        <div style="margin-top: 4px; font-family: 'Onest', sans-serif; font-size: 25px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #25252A;">stories мастер</div>
-        <svg width="150" height="10" viewBox="0 0 150 10" style="margin-top: 4px;"><path d="M3 7 C 40 2, 108 2, 147 5" stroke="#E05E1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+        <div style="transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 31px; font-weight: 700; line-height: 1; color: #E05E1F;">что умеет</div>
+        <div style="margin-top: 4px; font-family: 'Onest', sans-serif; font-size: 29px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #25252A;">stories мастер</div>
+        <svg width="174" height="11" viewBox="0 0 150 10" style="margin-top: 5px;"><path d="M3 7 C 40 2, 108 2, 147 5" stroke="#E05E1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
       </div>
       <div style="position: absolute; top: 27.5%; left: 20%; right: 20%; bottom: 18%; overflow: hidden; z-index: 2;">
         <div class="slides">
           <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ГОЛОСОВАЯ РАСПАКОВКА</div>
-            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Приложение задаёт вопросы, а ты отвечаешь голосом — никаких анкет на миллион пунктов. <br><br>Из ответов складывается твой профиль.</div>
+            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ГОЛОСОВАЯ РАСПАКОВКА</div>
+            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Приложение задаёт вопросы, а ты отвечаешь голосом — никаких анкет на миллион пунктов. <br><br>Из ответов складывается твой профиль.</div>
           </div>
           <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">СЦЕНАРИИ СТОРИС НА КАЖДЫЙ ДЕНЬ</div>
-            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Приложение само пишет сторителлинги — личные, экспертные, продающие и вовлекающие. <br><br>С теми смыслами, которые ты хочешь донести, и на языке твоей аудитории — про её боли, желания и сомнения.</div>
+            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">СЦЕНАРИИ СТОРИС НА КАЖДЫЙ ДЕНЬ</div>
+            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Приложение само пишет сторителлинги — личные, экспертные, продающие и вовлекающие. <br><br>С теми смыслами, которые ты хочешь донести, и на языке твоей аудитории — про её боли, желания и сомнения.</div>
           </div>
           <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">КОНТЕНТ-ПЛАН ИЗ «КАШИ МЫСЛЕЙ»</div>
-            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Составляет контент-план на неделю, две, три или четыре. <br><br>Просто вываливаешь все свои мысли в приложение — и получаешь структурный план выходов в сторис с готовыми сценариями. Двадцать тем в голове превращаются в контент на недели вперёд.</div>
+            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">КОНТЕНТ-ПЛАН ИЗ «КАШИ МЫСЛЕЙ»</div>
+            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Составляет контент-план на неделю, две, три или четыре. <br><br>Просто вываливаешь все свои мысли в приложение — и получаешь структурный план выходов в сторис с готовыми сценариями. Двадцать тем в голове превращаются в контент на недели вперёд.</div>
           </div>
           <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ПРОГРЕВ ПОД ЗАПУСК</div>
-            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Собирает прогрев на 3, 7 и 14 дней по специальной структуре и пишет сценарии, которые превращают подписчика в клиента.</div>
+            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ПРОГРЕВ ПОД ЗАПУСК</div>
+            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Собирает прогрев на 3, 7 и 14 дней по специальной структуре и пишет сценарии, которые превращают подписчика в клиента.</div>
             </div>
           </div>
         </div>
@@ -167,9 +169,26 @@
     </div>
     </div>
 
+  <div style="background: #25252A; padding: 4px 0 26px 0; overflow: hidden;">
+    <div style="background: #E05E1F; padding: 14px 0; overflow: hidden; transform: rotate(1.2deg); width: 420px; margin-left: -15px;">
+      <div class="ticker-track-back">
+        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
+          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
+          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div style="background: #25252A; color: #FBFAF8;">
-  <div style="padding: 56px 20px 46px 20px;">
-    <div style="margin-top: 20px; position: relative; width: 290px; margin-left: auto; margin-right: auto;">
+  <div style="padding: 10px 20px 46px 20px;">
+    <div style="position: relative; width: 290px; margin-left: auto; margin-right: auto;">
       <div style="transform: rotate(-2deg); background: #FFFFFF; border: 1px solid rgba(251,250,248,0.18); box-shadow: 0 12px 32px rgba(51,42,34,.10), 0 3px 9px rgba(51,42,34,.05); padding: 8px 8px 26px 8px;">
         <img src="juliya2.jpg" style="display: block; width: 100%; height: 320px; object-fit: cover;">
       </div>
