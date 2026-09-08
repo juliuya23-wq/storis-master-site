@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stories мастер — твой личный сценарист сторис и прогревов</title>
+<meta name="description" content="Приложение пишет сценарии сторис и прогревы твоим голосом — под твою аудиторию и нишу. Три сценария бесплатно, карта не нужна.">
+<meta property="og:title" content="stories мастер — твой личный сценарист сторис и прогревов">
+<meta property="og:description" content="Сценарии сторис за пару минут. Прогревы без давления и манипуляций. Смыслы, которые продают.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2325252A'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Helvetica' font-weight='bold' fill='%23E05E1F' text-anchor='middle'%3Es%3C/text%3E%3C/svg%3E">
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=Golos+Text:wght@400;500;600&family=Caveat:wght@600;700&display=swap");
+    body { margin: 0; }
+    a { color: #E05E1F; } a:hover { color: #C24E12; }
+    @keyframes heroReveal { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+    @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
+    .hero-img-wrap { overflow: hidden; animation: heroReveal 1.1s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-img { animation: kenburns 14s ease-in-out 1.2s infinite alternate; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-track { display: flex; width: max-content; animation: ticker 20s linear infinite; }
+    @keyframes writeIn { from { clip-path: inset(-18% 100% -18% 0); } to { clip-path: inset(-18% -6% -18% 0); } }
+    .write-line { clip-path: inset(-18% 100% -18% 0); animation: writeIn 1.5s cubic-bezier(.42,.04,.32,1) forwards; }
+    .paper { position: absolute; left: -16px; right: -16px; top: 0; bottom: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 14px 34px rgba(0,0,0,.34); filter: url(#torn); }
+    @keyframes slides { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
+    .slides { display: flex; width: 400%; height: 100%; animation: slides 16s cubic-bezier(.75,0,.25,1) infinite; }
+    @keyframes dot { 0%, 22% { background: #E05E1F; } 26%, 100% { background: #DCD6C7; } }
+    .dot { width: 7px; height: 7px; border-radius: 999px; background: #DCD6C7; animation: dot 16s linear infinite; }
+    @keyframes rev { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
+    .rev-track { display: flex; width: 400%; animation: rev 18s cubic-bezier(.75,0,.25,1) infinite; }
+    .rev-paper { position: relative; height: 100%; box-sizing: border-box; padding: 20px 18px; color: #25252A; }
+    .rev-bg { position: absolute; inset: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 10px 26px rgba(0,0,0,.32); filter: url(#torn); }
+    .rev-inner { position: relative; }
+    @keyframes revdot { 0%, 22% { background: #E05E1F; } 26%, 100% { background: rgba(251,250,248,0.28); } }
+    .revdot { width: 7px; height: 7px; border-radius: 999px; background: rgba(251,250,248,0.28); animation: revdot 18s linear infinite; }
+    .faq-item { background: #FFFFFF; border-radius: 16px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06); }
+    .faq-item > summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 14px; cursor: pointer; }
+    .faq-item > summary::-webkit-details-marker { display: none; }
+    .faq-q { font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35; color: #25252A; }
+    .faq-plus { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 999px; background: #E05E1F; color: #FBFAF8; font-family: 'Onest', sans-serif; font-size: 17px; font-weight: 700; line-height: 24px; text-align: center; }
+    .faq-plus::after { content: "+"; }
+    .faq-item[open] .faq-plus { background: #25252A; }
+    .faq-item[open] .faq-plus::after { content: "\2212"; }
+    .faq-a { margin-top: 10px; font-size: 14px; line-height: 1.55; color: #64625C; }
+  
+    html { background: #25252A; }
+    body { background: #25252A; -webkit-font-smoothing: antialiased; }
+    html { overflow-x: hidden; }
+    body { overflow-x: hidden; display: flex; justify-content: center; }
+    .page { width: 390px; flex: 0 0 390px; box-sizing: border-box;
+            background: #25252A; color: #25252A;
+            font-family: 'Golos Text', -apple-system, 'Segoe UI', Verdana, sans-serif;
+            position: relative; overflow: hidden; }
+    /* экраны уже 390px — ужимаем всю страницу целиком, чтобы не было прокрутки вбок */
+    @media (max-width: 389px) { .page { zoom: calc(100vw / 390); } }
+    img { max-width: 100%; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<svg width="0" height="0" style="position: absolute;" aria-hidden="true"><filter id="torn" x="-6%" y="-12%" width="112%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.016 0.004" numOctaves="3" seed="4" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></svg>
+
+  
+
+  <div style="background: #25252A; padding: 0 20px 42px 20px; position: relative; overflow: hidden;">
+    <img src="phone-orange.png" style="position: absolute; top: -174px; left: -148px; width: 411px; height: 392px; object-fit: contain; transform: rotate({{phoneA}}deg); filter: drop-shadow(0 18px 32px rgba(0,0,0,.5)); z-index: 3">
+    <div style="display: flex; justify-content: flex-end; padding-top: 36px; position: relative;">
+      <div style="width: 180px; margin-right: -34px; transform: rotate(3deg); background: #FBFAF8; padding: 6px 6px 22px 6px; box-shadow: 0 16px 40px rgba(0,0,0,.45); position: relative;">
+        <div style="overflow: hidden;"><img src="juliya.jpg" class="hero-img" style="display: block; width: 100%; height: 192px; object-fit: cover; object-position: top;"></div>
+        
+      </div>
+      <img src="tape-small.png" style="position: absolute; top: 8px; left: 325px; margin-left: -41px; width: 60px; transform: rotate(-4deg);">
+    </div>
+    <div style="margin-top: 32px; position: relative; text-align: center;">
+      <div style="font-family: 'Onest', sans-serif; font-size: 74px; font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; color: #FBFAF8;">stories<br>мастер</div>
+      <svg width="190" height="12" viewBox="0 0 190 12" style="margin-top: 8px;"><path d="M4 8 C 50 3, 136 3, 186 6" stroke="#E05E1F" stroke-width="2.6" fill="none" stroke-linecap="round"></path></svg>
+    </div>
+    <div style="margin-top: 22px; text-align: center; font-family: 'Onest', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.4; color: #FBFAF8; position: relative;">твой личный сценарист<br>сторис и прогревов</div>
+    
+    <div style="margin-top: 10px; text-align: center; font-size: 14px; line-height: 1.65; color: rgba(251,250,248,0.72); position: relative; padding: 0 14px;">пишет твоим голосом, под твою <br>аудиторию и нишу</div>
+    <div style="margin-top: 20px; position: relative; text-align: center;">
+      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: .5s;">преврати свои сторис в сериал,</div>
+      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: 1.4s; margin-top: 4px;">от которого невозможно оторваться</div>
+    </div>
+    <div style="margin-top: 26px; height: 54px; background: #FBFAF8; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #25252A; position: relative;">попробовать бесплатно</div>
+    <div style="margin-top: 10px; text-align: center; font-size: 13px; color: rgba(251,250,248,0.5); position: relative;">3 сценария бесплатно, карта не нужна</div>
+  </div>
+
+  <div style="background: #25252A; padding: 30px 0 92px 0; overflow: hidden;">
+    <div style="background: #E05E1F; padding: 14px 0; overflow: hidden; transform: rotate(-1deg); width: 420px; margin-left: -15px;">
+      <div class="ticker-track">
+        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
+          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="color: #FBFAF8;">✳</span>
+          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="color: #FBFAF8;">✳</span>
+          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="color: #FBFAF8;">✳</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
+          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="color: #FBFAF8;">✳</span>
+          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="color: #FBFAF8;">✳</span>
+          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="color: #FBFAF8;">✳</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; margin-top: 44px; padding: 60px 22px 58px 22px;">
+      <div class="paper"></div>
+      <div style="position: relative;">
+        <div style="font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14;">это приложение для тебя, <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">если</span>:</div>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
+            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…открываешь сторис и <span style="background: #F9E4D4; padding: 1px 4px;">не знаешь, о чём писать</span></div>
+            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Тем и мыслей много, а в сторис — каша или тишина. Приложение само предложит идею под твой день и разложит мысли в план.</div>
+          </div>
+          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
+            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…тратишь на сторис <span style="background: #F9E4D4; padding: 1px 4px;">полдня</span></div>
+            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Придумать, написать, переписать… Здесь готовый сценарий появляется за пару минут — осталось снять.</div>
+          </div>
+          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
+            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…ведёшь сторис, <span style="background: #F9E4D4; padding: 1px 4px;">а продаж нет</span></div>
+            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Продажи начинаются с доверия. Сторис выстраивают его шаг за шагом: аудитория узнаёт тебя, привыкает, начинает верить — и приходит покупать сама.</div>
+          </div>
+          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
+            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…боишься продавать и <span style="background: #F9E4D4; padding: 1px 4px;">звучать навязчиво</span></div>
+            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Прогревы строятся через истории — без давления, манипуляций и постоянных «купи-купи».</div>
+          </div>
+          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
+            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…то ведёшь блог, <span style="background: #F9E4D4; padding: 1px 4px;">то пропадаешь на месяц</span></div>
+            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Когда есть готовый сценарий на сегодня, регулярность перестаёт держаться на силе воли.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div style="background: #25252A; padding: 34px 20px 110px 20px;">
+    <div style="position: relative; width: 386px; margin: 8px -19px 0 -19px;">
+      <div style="position: absolute; top: 14.5%; left: 16%; right: 16%; z-index: 3; text-align: center;">
+        <div style="transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 27px; font-weight: 700; line-height: 1; color: #E05E1F;">что умеет</div>
+        <div style="margin-top: 4px; font-family: 'Onest', sans-serif; font-size: 25px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #25252A;">stories мастер</div>
+        <svg width="150" height="10" viewBox="0 0 150 10" style="margin-top: 4px;"><path d="M3 7 C 40 2, 108 2, 147 5" stroke="#E05E1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="position: absolute; top: 27.5%; left: 20%; right: 20%; bottom: 18%; overflow: hidden; z-index: 2;">
+        <div class="slides">
+          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
+            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ГОЛОСОВАЯ РАСПАКОВКА</div>
+            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Приложение задаёт вопросы, а ты отвечаешь голосом — никаких анкет на миллион пунктов. <br><br>Из ответов складывается твой профиль.</div>
+          </div>
+          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
+            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">СЦЕНАРИИ СТОРИС НА КАЖДЫЙ ДЕНЬ</div>
+            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Приложение само пишет сторителлинги — личные, экспертные, продающие и вовлекающие. <br><br>С теми смыслами, которые ты хочешь донести, и на языке твоей аудитории — про её боли, желания и сомнения.</div>
+          </div>
+          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
+            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">КОНТЕНТ-ПЛАН ИЗ «КАШИ МЫСЛЕЙ»</div>
+            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Составляет контент-план на неделю, две, три или четыре. <br><br>Просто вываливаешь все свои мысли в приложение — и получаешь структурный план выходов в сторис с готовыми сценариями. Двадцать тем в голове превращаются в контент на недели вперёд.</div>
+          </div>
+          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
+            <div style="font-family: 'Onest', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ПРОГРЕВ ПОД ЗАПУСК</div>
+            <div style="margin-top: 12px; font-size: 14px; line-height: 1.42; color: #4A463F;">Собирает прогрев на 3, 7 и 14 дней по специальной структуре и пишет сценарии, которые превращают подписчика в клиента.</div>
+            </div>
+          </div>
+        </div>
+      <div style="position: absolute; bottom: 13%; left: 20%; right: 20%; z-index: 3; display: flex; justify-content: center; gap: 6px;">
+          <div class="dot" style="animation-delay: 0s;"></div>
+          <div class="dot" style="animation-delay: -12s;"></div>
+          <div class="dot" style="animation-delay: -8s;"></div>
+          <div class="dot" style="animation-delay: -4s;"></div>
+      </div>
+      <img src="phone-screen.png" style="display: block; width: 100%; position: relative; z-index: 1;">
+    </div>
+    </div>
+
+  <div style="background: #25252A; color: #FBFAF8;">
+  <div style="padding: 56px 20px 46px 20px;">
+    <div style="margin-top: 20px; position: relative; width: 290px; margin-left: auto; margin-right: auto;">
+      <div style="transform: rotate(-2deg); background: #FFFFFF; border: 1px solid rgba(251,250,248,0.18); box-shadow: 0 12px 32px rgba(51,42,34,.10), 0 3px 9px rgba(51,42,34,.05); padding: 8px 8px 26px 8px;">
+        <img src="juliya2.jpg" style="display: block; width: 100%; height: 320px; object-fit: cover;">
+      </div>
+      <div style="position: absolute; bottom: 2px; right: -8px; transform: rotate(3deg); background: #F9E4D4; border-radius: 6px; padding: 5px 12px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #C1573B;">@JULIYA.LIPA</div>
+    </div>
+    <div style="margin-top: 20px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Я Юлия Липецкая, контент-маркетолог. Пять лет каждый день пишу сценарии сторис и прогревы для бизнесов и блогов в инстаграме.</div>
+    <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">А ещё я занимаюсь нейросетями: сама собираю приложения и ботов, которые снимают с эксперта рутину. <span style="color: #E05E1F;"><b>stories мастер</b></span> родился ровно на стыке этих двух вещей — методики и технологии.</div>
+    <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">За годы работы у меня собралась база: какие истории цепляют и как их рассказывать, чтобы человек сам дошёл до покупки. Эту методику я и загрузила в нейросеть.</div>
+    <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Поэтому внутри приложения нейросеть пишет не как ей вздумается, а по моей системе.</div>
+    
+    
+  </div>
+
+
+  <div style="padding: 56px 20px 46px 20px;">
+    <div style="margin-top: 20px; transform: rotate(-7deg); transform-origin: left center; font-family: 'Caveat', 'Golos Text', cursive; font-size: 62px; font-weight: 700; line-height: 1; color: #FF6A1F">отзывы</div>
+    <div style="margin-top: 10px; font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14;">методика работает <br>в разных нишах</div>
+    
+    <div style="margin-top: 22px; height: 236px; overflow: hidden;">
+      <div class="rev-track">
+        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
+          <div class="rev-paper">
+            <div class="rev-bg"></div>
+            <img src="tape-a-cut.png" style="position: absolute; top: -13px; left: 49%; width: 112px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(-3.5deg); z-index: 2; pointer-events: none;">
+            <div class="rev-inner">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">А</div>
+                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Алина <span style="font-weight: 500; color: #8C8477;">· нумеролог</span></div>
+              </div>
+              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;">Я узнала очень много возражений и своих упущений, <b>ещё я продала два разбора из этих сторис!!</b> Я в шоке</div>
+            </div>
+          </div>
+        </div>
+        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
+          <div class="rev-paper">
+            <div class="rev-bg"></div>
+            <img src="tape-c.png" style="position: absolute; top: -12px; left: 52%; width: 110px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(5deg); z-index: 2; pointer-events: none;">
+            <div class="rev-inner">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">С</div>
+                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Света <span style="font-weight: 500; color: #8C8477;">· остеопат</span></div>
+              </div>
+              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;"><b>Охваты, кстати, у меня поднялись в два раза))</b> Благодарю за грамотное, простыми словами, объяснение)</div>
+            </div>
+          </div>
+        </div>
+        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
+          <div class="rev-paper">
+            <div class="rev-bg"></div>
+            <img src="tape-c.png" style="position: absolute; top: -12px; left: 48%; width: 110px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(-5deg); z-index: 2; pointer-events: none;">
+            <div class="rev-inner">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">А</div>
+                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Андрей <span style="font-weight: 500; color: #8C8477;">· тренер</span></div>
+              </div>
+              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;">После вчерашней сторис <b>ко мне записалась одна мама с дочкой!</b> Два месяца наблюдала — сегодня решилась</div>
+            </div>
+          </div>
+        </div>
+        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
+          <div class="rev-paper">
+            <div class="rev-bg"></div>
+            <img src="tape-a-cut.png" style="position: absolute; top: -12px; left: 52%; width: 110px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(3deg); z-index: 2; pointer-events: none;">
+            <div class="rev-inner">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">Е</div>
+                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Елена <span style="font-weight: 500; color: #8C8477;">· дизайнер</span></div>
+              </div>
+              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;">Урааа!! <b>У меня первый с инсты клиент</b></div>
+              <div style="margin-top: 8px; background: #F0DCC0; border-radius: 14px 4px 14px 14px; padding: 10px 12px; font-size: 13px; line-height: 1.5; margin-left: 34px;">Это просто супер!!! Поздравляю</div>
+              <div style="margin-top: 4px; font-size: 11px; color: #8C8477; text-align: right;">— ответ Юлии</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; display: flex; justify-content: center; gap: 6px;">
+      <div class="revdot" style="animation-delay: 0s;"></div>
+      <div class="revdot" style="animation-delay: -13.5s;"></div>
+      <div class="revdot" style="animation-delay: -9s;"></div>
+      <div class="revdot" style="animation-delay: -4.5s;"></div>
+    </div>
+  </div>
+
+  <div style="padding: 56px 20px 46px 20px;">
+    <div style="margin-top: 20px; font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em;">сколько <span style="position: relative; display: inline-block;">это стоит<svg width="132" height="8" viewBox="0 0 132 8" style="position: absolute; left: 0; bottom: -4px;"><path d="M2 5 C 34 2, 94 2, 130 4" stroke="#E05E1F" stroke-width="2.2" fill="none" stroke-linecap="round"></path></svg></span></div>
+    <div style="margin-top: 24px;">
+      <div style="background: rgba(251,250,248,0.08); border: 1px solid rgba(251,250,248,0.22); border-radius: 18px; padding: 26px 22px 24px 22px;">
+        <div style="font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #E05E1F;">ПОДПИСКА</div>
+        <div style="margin-top: 10px; display: flex; align-items: baseline; gap: 7px;">
+          <div style="font-family: 'Onest', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">[ЦЕНА] BYN</div>
+          <div style="font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 600; color: rgba(251,250,248,0.62);">/ мес</div>
+        </div>
+        <div style="margin-top: 6px; font-size: 13px; color: rgba(251,250,248,0.55);">отменить можно в любой момент</div>
+        <div style="margin-top: 20px; height: 1px; background: rgba(251,250,248,0.14);"></div>
+        <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 9px;">
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">распаковка и личный профиль</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">30 сценариев в месяц</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">планы прогрева на 3, 7 и 14 дней</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">контент-планы из «каши смыслов»</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">правки без ограничений</div></div>
+        </div>
+        <div style="margin-top: 22px; height: 52px; background: #E05E1F; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #FBFAF8;">оформить подписку</div>
+      </div>
+      <div style="margin-top: 22px; position: relative; background: #F9E4D4; border: 2px solid #E05E1F; border-radius: 18px; padding: 26px 22px 24px 22px; color: #25252A; box-shadow: 0 16px 36px rgba(0,0,0,.34);">
+        <div style="position: absolute; top: -13px; left: 20px; background: #E05E1F; border-radius: 999px; padding: 5px 14px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #FBFAF8;">БЕЗ ОПЛАТЫ</div>
+        <div style="transform: rotate(-5deg); transform-origin: left center; font-family: 'Caveat', 'Golos Text', cursive; font-size: 38px; font-weight: 700; line-height: 1; color: #E05E1F; white-space: nowrap;">попробуй бесплатно</div>
+        <div style="margin-top: 16px; font-family: 'Onest', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2;">3 готовых сценария на пробу</div>
+        <div style="margin-top: 8px; font-size: 14px; line-height: 1.55; color: #5A554C;">Карта не нужна, подписку оформлять не надо. Просто посмотри, какие сценарии получаются, и реши сама.</div>
+        <div style="margin-top: 20px; height: 52px; background: #25252A; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #FBFAF8;">попробовать бесплатно</div>
+      </div>
+    </div>
+    <div style="margin-top: 20px; font-size: 12px; color: rgba(251,250,248,0.45);">*все расчёты производятся в белорусских рублях</div>
+  </div>
+
+  <div style="padding: 10px 0 54px 0;">
+    <div style="position: relative; padding: 60px 22px 58px 22px;">
+      <div class="paper"></div>
+      <div style="position: relative;">
+        <div style="font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14; color: #25252A;">частые <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">вопросы</span></div>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <details class="faq-item">
+            <summary><span class="faq-q">Тексты будут звучать «как нейросеть»?</span><span class="faq-plus"></span></summary>
+            <div class="faq-a">Нет. Приложение пишет по твоей распаковке — твоими словами и историями, а каждый текст проходит фильтр живой речи. Не понравилась фраза — попроси переписать.</div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">У меня маленький блог — есть ли смысл?</span><span class="faq-plus"></span></summary>
+            <div class="faq-a">Да. Методика построена на доверии, а не на охватах: ученицы получали заявки и со 100 подписчиками.</div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">Не люблю голосовые — что делать?</span><span class="faq-plus"></span></summary>
+            <div class="faq-a">Отвечай текстом — приложение умеет и так. Голос просто быстрее и живее.</div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">Сколько времени это займёт?</span><span class="faq-plus"></span></summary>
+            <div class="faq-a">Распаковка — 5–7 минут, один раз. Дальше каждый сценарий — пара минут.</div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">Подходит для любой ниши?</span><span class="faq-plus"></span></summary>
+            <div class="faq-a">Да. Методика держится не на нише, а на твоих историях и смыслах — поэтому одинаково работает и у эксперта, и у мастера, и у магазина. Среди отзывов выше — нумеролог, остеопат, тренер и дизайнер.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div style="padding: 30px 20px 8px 20px;">
+    <div style="display: flex; align-items: flex-start; gap: 16px;">
+      <div style="position: relative; flex: 0 0 auto; width: 156px; margin-left: -52px; transform: rotate(-3deg); background: #FBFAF8; padding: 6px 6px 16px 6px; box-shadow: 0 14px 32px rgba(0,0,0,.45);">
+        <img src="juliya3.jpg" style="display: block; width: 100%; height: 176px; object-fit: cover; object-position: top right;">
+        
+      </div>
+      <div style="flex: 1 1 auto; padding-top: 10px;">
+        <div style="font-family: 'Onest', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; color: rgba(251,250,248,0.8);">сомневаешься,<br>подойдёт ли тебе</div>
+        <div style="margin-top: 8px; font-family: 'Onest', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; color: #FBFAF8;">stories<br>мастер?</div>
+        <svg width="176" height="9" viewBox="0 0 176 9" style="margin-top: 5px;"><path d="M3 6 C 46 2, 128 2, 173 5" stroke="#E05E1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div style="margin-top: 18px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Расскажи, чем занимаешься, — я посмотрю твой блог и честно скажу, подойдёт тебе приложение или нет. А если подойдёт, сразу напишу, с чего начать и какие сторис в твоей нише работают лучше всего.</div>
+    <a href="https://t.me/Juliya_Lipetskaya" target="_blank" rel="noopener" style="margin-top: 18px; height: 52px; background: #E05E1F; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #FBFAF8; text-decoration: none;">написать Юле</a>
+    
+  </div>
+
+  <div style="padding: 8px 20px 34px 20px; border-top: 1px solid rgba(251,250,248,0.14); margin: 0 20px;">
+    <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Публичная оферта</div>
+      <div style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Оплата, порядок оказания услуг и возврат</div>
+      <div style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Политика персональных данных</div>
+    </div>
+    <div style="margin-top: 16px; font-size: 12px; color: rgba(251,250,248,0.45); line-height: 1.7;">Самозанятая Липецкая Юлия<br>УНП СА8580604<br>г. Витебск, Московский, 13-2<br>Республика Беларусь<br><a href="mailto:juliuya23@gmail.com" style="color: rgba(251,250,248,0.68); text-decoration: underline;">juliuya23@gmail.com</a> · @juliya.lipa</div>
+  </div>
+  </div>
+
+</div>
+</body>
+</html>
