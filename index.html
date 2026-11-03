@@ -5,7 +5,7 @@
 <!-- макет свёрстан на 390px: браузер сам подгоняет масштаб под ширину экрана -->
 <meta name="viewport" content="width=390">
 <title>stories мастер — твой личный сценарист сторис и прогревов</title>
-<meta name="description" content="Приложение пишет сценарии сторис и прогревы твоим голосом — под твою аудиторию и нишу. Три сценария бесплатно, карта не нужна.">
+<meta name="description" content="Клодик — сценарист сторис в Telegram. Пишет сценарии и прогревы твоим голосом, под твою аудиторию и нишу. Три сценария бесплатно.">
 <meta property="og:title" content="stories мастер — твой личный сценарист сторис и прогревов">
 <meta property="og:description" content="Сценарии сторис за пару минут. Прогревы без давления и манипуляций. Смыслы, которые продают.">
 <meta property="og:type" content="website">
@@ -22,20 +22,33 @@
     .ticker-track { display: flex; width: max-content; animation: ticker 20s linear infinite; }
     @keyframes tickerBack { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     .ticker-track-back { display: flex; width: max-content; animation: tickerBack 22s linear infinite; }
+    .ticker-row { display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap; }
+    .ticker-row i { display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle; }
     @keyframes writeIn { from { clip-path: inset(-18% 100% -18% 0); } to { clip-path: inset(-18% -6% -18% 0); } }
     .write-line { clip-path: inset(-18% 100% -18% 0); animation: writeIn 2.9s cubic-bezier(.42,.04,.32,1) forwards; }
     .paper { position: absolute; left: -16px; right: -16px; top: 0; bottom: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 14px 34px rgba(0,0,0,.34); filter: url(#torn); }
-    @keyframes slides { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
-    .slides { display: flex; width: 400%; height: 100%; animation: slides 16s cubic-bezier(.75,0,.25,1) infinite; }
-    @keyframes dot { 0%, 22% { background: #E05E1F; } 26%, 100% { background: #DCD6C7; } }
-    .dot { width: 7px; height: 7px; border-radius: 999px; background: #DCD6C7; animation: dot 16s linear infinite; }
+    @keyframes slides { 0%, 13.5% { transform: translateX(0); } 16.667%, 30.2% { transform: translateX(-16.667%); } 33.333%, 46.8% { transform: translateX(-33.333%); } 50%, 63.5% { transform: translateX(-50%); } 66.667%, 80.2% { transform: translateX(-66.667%); } 83.333%, 96.8% { transform: translateX(-83.333%); } 100% { transform: translateX(0); } }
+    .slides { display: flex; width: 600%; height: 100%; animation: slides 24s cubic-bezier(.75,0,.25,1) infinite; }
+    .slides img { width: 16.6667%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    @keyframes dot { 0%, 14.5% { background: #E05E1F; } 17.5%, 100% { background: rgba(251,250,248,0.28); } }
+    .dot { width: 7px; height: 7px; border-radius: 999px; background: rgba(251,250,248,0.28); animation: dot 24s linear infinite; }
     @keyframes rev { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
     .rev-track { display: flex; width: 400%; animation: rev 18s cubic-bezier(.75,0,.25,1) infinite; }
-    .rev-paper { position: relative; height: 100%; box-sizing: border-box; padding: 20px 18px; color: #25252A; }
-    .rev-bg { position: absolute; inset: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 10px 26px rgba(0,0,0,.32); filter: url(#torn); }
-    .rev-inner { position: relative; }
+    .rev-slide { width: 25%; box-sizing: border-box; padding: 0 5px; }
+    /* отзыв в виде переписки, как скрин из директа */
+    .dm { background: #FFFFFF; border-radius: 18px; padding: 14px 14px 12px 14px; color: #25252A; box-shadow: 0 10px 26px rgba(0,0,0,.32); height: 100%; box-sizing: border-box; }
+    .dm-head { font-size: 12px; color: #8C8477; }
+    .dm-name { font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; margin-top: 2px; }
+    .dm-name span { font-weight: 500; color: #8C8477; }
+    .dm-in { margin-top: 10px; background: #EFEFEF; border-radius: 16px 16px 16px 4px; padding: 10px 12px; font-size: 14px; line-height: 1.5; max-width: 86%; }
+    .dm-out { margin-top: 8px; margin-left: auto; background: #E05E1F; color: #FBFAF8; border-radius: 16px 16px 4px 16px; padding: 9px 12px; font-size: 13px; line-height: 1.45; max-width: 72%; width: max-content; }
     @keyframes revdot { 0%, 22% { background: #E05E1F; } 26%, 100% { background: rgba(251,250,248,0.28); } }
     .revdot { width: 7px; height: 7px; border-radius: 999px; background: rgba(251,250,248,0.28); animation: revdot 18s linear infinite; }
+    .rev-win { display: flex; align-items: flex-start; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 0 12px 0; }
+    .rev-win::-webkit-scrollbar { display: none; }
+    .shot { display: block; flex: 0 0 90%; width: 90%; scroll-snap-align: start; border-radius: 12px; box-shadow: 0 4px 14px rgba(51,42,34,.14); }
+    .rdot { width: 7px; height: 7px; border-radius: 999px; background: #DCD6C7; transition: background .3s; }
+    .rdot.on { background: #E05E1F; }
     .faq-item { background: #FFFFFF; border-radius: 16px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06); }
     .faq-item > summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 14px; cursor: pointer; }
     .faq-item > summary::-webkit-details-marker { display: none; }
@@ -45,7 +58,7 @@
     .faq-item[open] .faq-plus { background: #25252A; }
     .faq-item[open] .faq-plus::after { content: "\2212"; }
     .faq-a { margin-top: 10px; font-size: 14px; line-height: 1.55; color: #64625C; }
-  
+
     html { overflow-x: hidden; background: #25252A; }
     body { overflow-x: hidden; background: #25252A; -webkit-font-smoothing: antialiased; }
     .page { width: 390px; margin: 0 auto; box-sizing: border-box;
@@ -53,10 +66,43 @@
             font-family: 'Golos Text', -apple-system, 'Segoe UI', Verdana, sans-serif;
             position: relative; overflow: hidden; }
     img { max-width: 100%; }
-    /* рукописная фраза ждёт, пока страница догрузится: иначе на медленной
-       сети она успевает дописаться до того, как её увидят */
     .write-line { animation-play-state: paused; }
     body.loaded .write-line { animation-play-state: running; }
+
+    /* общие кирпичики новой версии */
+    .h2 { font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14; }
+    .hand { font-family: 'Caveat', 'Golos Text', cursive; font-weight: 700; color: #FF6A1F; line-height: 1; }
+    .light { color: #FBFAF8; }
+    .muted { color: rgba(251,250,248,0.78); font-size: 15px; line-height: 1.6; }
+    .mark { background: #F9E4D4; padding: 1px 4px; }
+    .mark-dark { background: rgba(224,94,31,0.28); padding: 1px 4px; border-radius: 3px; }
+    .pill { display: inline-block; border: 1px solid rgba(251,250,248,0.3); border-radius: 999px; padding: 6px 14px; font-family: 'Onest', sans-serif; font-size: 13px; font-weight: 700; color: #FBFAF8; }
+    .pill.dark { border-color: rgba(37,37,42,0.3); color: #25252A; }
+    .card { background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06); }
+    .card-t { font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35; }
+    .card-p { margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C; }
+    .btn { height: 54px; border-radius: 999px; display: flex; text-decoration: none; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; position: relative; }
+    .btn.white { background: #FBFAF8; color: #25252A; }
+    .btn.orange { background: #E05E1F; color: #FBFAF8; }
+    .btn.ink { background: #25252A; color: #FBFAF8; }
+    .btn-sub { margin-top: 10px; text-align: center; font-size: 13px; color: rgba(251,250,248,0.55); }
+    .btn-sub.on-paper { color: #8C8477; }
+    .cta { padding: 6px 20px 0 20px; }
+    /* реплика Клодика */
+    .say { display: flex; align-items: center; gap: 10px; }
+    .say img { width: 54px; height: 54px; flex: 0 0 auto; object-fit: contain; }
+    .say .bubble { background: #FFFFFF; color: #25252A; border-radius: 18px 18px 18px 4px; padding: 10px 14px; font-size: 14px; line-height: 1.45; box-shadow: 0 8px 20px rgba(0,0,0,.28); }
+    .feat { display: flex; gap: 14px; align-items: flex-start; background: rgba(251,250,248,0.06); border: 1px solid rgba(251,250,248,0.14); border-radius: 16px; padding: 16px; }
+    .feat-n { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px; background: #E05E1F; color: #FBFAF8; font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .feat-t { font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 0.02em; color: #FBFAF8; line-height: 1.25; }
+    .feat-p { margin-top: 5px; font-size: 14px; line-height: 1.5; color: rgba(251,250,248,0.72); }
+    .p-dark { font-size: 15px; line-height: 1.6; color: #4A463F; }
+    .paper.white { background-color: #FFFFFF; background-image: none; }
+    .feat.light { background: #FFFFFF; border: none; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06); }
+    .feat.light .feat-t { color: #25252A; }
+    .feat.light .feat-p { color: #64625C; }
+    @keyframes dotPaper { 0%, 14.5% { background: #E05E1F; } 17.5%, 100% { background: #DCD6C7; } }
+    .dot.on-paper { background: #DCD6C7; animation-name: dotPaper; }
 </style>
 </head>
 <body>
@@ -64,14 +110,12 @@
 
 <svg width="0" height="0" style="position: absolute;" aria-hidden="true"><filter id="torn" x="-6%" y="-12%" width="112%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.016 0.004" numOctaves="3" seed="4" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></svg>
 
-  
-
+  <!-- ШАПКА -->
   <div style="background: #25252A; padding: 0 20px 42px 20px; position: relative; overflow: hidden;">
     <img src="phone-orange.png" style="position: absolute; top: -174px; left: -148px; width: 411px; height: 392px; object-fit: contain; transform: rotate(110deg); filter: drop-shadow(0 18px 32px rgba(0,0,0,.5)); z-index: 3">
     <div style="display: flex; justify-content: flex-end; padding-top: 36px; position: relative;">
-      <div style="width: 180px; margin-right: -34px; transform: rotate(3deg); background: #FBFAF8; padding: 6px 6px 22px 6px; box-shadow: 0 16px 40px rgba(0,0,0,.45); position: relative;">
-        <div style="overflow: hidden;"><img src="juliya.jpg" class="hero-img" style="display: block; width: 100%; height: 192px; object-fit: cover; object-position: top;"></div>
-        
+      <div style="width: 190px; margin-right: -30px; transform: rotate(3deg); background: #FBFAF8; padding: 6px 6px 22px 6px; box-shadow: 0 16px 40px rgba(0,0,0,.45); position: relative;">
+        <div style="overflow: hidden;"><img src="klodik.jpg" alt="Клодик — сценарист сторис" class="hero-img" style="display: block; width: 100%; height: 200px; object-fit: cover; object-position: center 25%;"></div>
       </div>
       <img src="tape-small.png" style="position: absolute; top: 8px; left: 325px; margin-left: -41px; width: 60px; transform: rotate(-4deg);">
     </div>
@@ -80,251 +124,238 @@
       <svg width="190" height="12" viewBox="0 0 190 12" style="margin-top: 8px;"><path d="M4 8 C 50 3, 136 3, 186 6" stroke="#E05E1F" stroke-width="2.6" fill="none" stroke-linecap="round"></path></svg>
     </div>
     <div style="margin-top: 22px; text-align: center; font-family: 'Onest', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.4; color: #FBFAF8; position: relative;">твой личный сценарист<br>сторис и прогревов</div>
-    
-    <div style="margin-top: 10px; text-align: center; font-size: 14px; line-height: 1.65; color: rgba(251,250,248,0.72); position: relative; padding: 0 14px;">пишет твоим голосом, под твою <br>аудиторию и нишу</div>
+    <div style="margin-top: 10px; text-align: center; font-size: 14px; line-height: 1.65; color: rgba(251,250,248,0.72); position: relative; padding: 0 14px;">пишу твоим голосом, под твою <br>аудиторию и нишу</div>
     <div style="margin-top: 20px; position: relative; text-align: center;">
-      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: 1.4s;">преврати свои сторис в сериал,</div>
-      <div class="write-line" style="display: inline-block; transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 25px; font-weight: 700; line-height: 1.2; color: #FF6A1F; white-space: nowrap; animation-delay: 3.9s; margin-top: 4px;">от которого невозможно оторваться</div>
+      <div class="write-line hand" style="display: inline-block; transform: rotate(-6deg); font-size: 25px; line-height: 1.2; white-space: nowrap; animation-delay: 1.4s;">превращаю твои сторис в сериал,</div>
+      <div class="write-line hand" style="display: inline-block; transform: rotate(-6deg); font-size: 25px; line-height: 1.2; white-space: nowrap; animation-delay: 3.9s; margin-top: 4px;">от которого невозможно оторваться</div>
     </div>
-    <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" style="margin-top: 26px; height: 54px; background: #FBFAF8; border-radius: 999px; display: flex; text-decoration: none; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #25252A; position: relative;">попробовать бесплатно</a>
-    <div style="margin-top: 10px; text-align: center; font-size: 13px; color: rgba(251,250,248,0.5); position: relative;">3 сценария бесплатно, карта не нужна</div>
+    <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" class="btn white" style="margin-top: 26px;">попробовать бесплатно</a>
+    <div class="btn-sub">3 сценария бесплатно</div>
   </div>
 
+  <!-- БЕГУЩАЯ СТРОКА -->
   <div style="background: #25252A; padding: 30px 0 92px 0; overflow: hidden;">
     <div style="background: #E05E1F; padding: 14px 0; overflow: hidden; transform: rotate(-1deg); width: 420px; margin-left: -15px;">
       <div class="ticker-track">
-        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
-          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
-          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-        </div>
+        <div class="ticker-row"><span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><i></i><span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><i></i><span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><i></i></div>
+        <div class="ticker-row"><span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><i></i><span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><i></i><span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><i></i></div>
       </div>
     </div>
 
+    <!-- ЭТО ДЛЯ ТЕБЯ, ЕСЛИ -->
     <div style="position: relative; margin-top: 44px; padding: 60px 22px 58px 22px;">
       <div class="paper"></div>
       <div style="position: relative;">
-        <div style="font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14;">это приложение для тебя, <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">если:</span></div>
+        <div class="h2">это приложение для тебя, <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">если:</span></div>
         <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
-          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
-            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…открываешь сторис и <span style="background: #F9E4D4; padding: 1px 4px;">не знаешь, о чём писать</span></div>
-            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Тем и мыслей много, а в сторис — каша или тишина. Приложение само предложит идею под твой день и разложит мысли в план.</div>
+          <div class="card">
+            <div class="card-t">…открываешь сторис и <span class="mark">не знаешь, о чём писать</span></div>
+            <div class="card-p">Тем и мыслей много, а в сторис — каша или тишина. Я сам предложу идею под твой день и разложу мысли по полочкам.</div>
           </div>
-          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
-            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…тратишь на сторис <span style="background: #F9E4D4; padding: 1px 4px;">полдня</span></div>
-            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Придумать, написать, переписать… Здесь готовый сценарий появляется за пару минут — осталось снять.</div>
+          <div class="card">
+            <div class="card-t">…тратишь на сторис <span class="mark">полдня</span></div>
+            <div class="card-p">Придумать, написать, переписать… Со мной готовый сценарий появляется за пару минут — осталось снять.</div>
           </div>
-          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
-            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…ведёшь сторис, <span style="background: #F9E4D4; padding: 1px 4px;">а продаж нет</span></div>
-            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Продажи начинаются с доверия. Сторис выстраивают его шаг за шагом: аудитория узнаёт тебя, привыкает, начинает верить — и приходит покупать сама.</div>
+          <div class="card">
+            <div class="card-t">…ведёшь сторис, <span class="mark">а продаж нет</span></div>
+            <div class="card-p">Продажи начинаются с доверия. Мои сторис выстраивают его шаг за шагом: аудитория узнаёт тебя, привыкает, начинает верить — и приходит покупать сама.</div>
           </div>
-          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
-            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…боишься продавать и <span style="background: #F9E4D4; padding: 1px 4px;">звучать навязчиво</span></div>
-            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Прогревы строятся через истории — без давления, манипуляций и постоянных «купи-купи».</div>
+          <div class="card">
+            <div class="card-t">…боишься продавать и <span class="mark">звучать навязчиво</span></div>
+            <div class="card-p">Прогревы я строю через истории — без давления, манипуляций и постоянных «купи-купи».</div>
           </div>
-          <div style="background: #FFFFFF; border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(51,42,34,.05), 0 4px 14px rgba(51,42,34,.06);">
-            <div style="font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35;">…то ведёшь блог, <span style="background: #F9E4D4; padding: 1px 4px;">то пропадаешь на месяц</span></div>
-            <div style="margin-top: 6px; font-size: 14px; line-height: 1.55; color: #64625C;">Когда есть готовый сценарий на сегодня, регулярность перестаёт держаться на силе воли.</div>
-            </div>
+          <div class="card">
+            <div class="card-t">…то ведёшь блог, <span class="mark">то пропадаешь на месяц</span></div>
+            <div class="card-p">Когда на сегодня уже есть готовый сценарий, регулярность перестаёт держаться на силе воли.</div>
           </div>
         </div>
+        <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" class="btn ink" style="margin-top: 26px;">попробовать бесплатно прямо сейчас</a>
+        <div class="btn-sub on-paper">напиши свой первый сценарий</div>
       </div>
     </div>
+  </div>
 
-  <div style="background: #25252A; padding: 34px 20px 24px 20px;">
-    <div style="position: relative; width: 446px; margin: 8px -48px 0 -48px;">
-      <div style="position: absolute; top: 14.5%; left: 16%; right: 16%; z-index: 3; text-align: center;">
-        <div style="transform: rotate(-6deg); font-family: 'Caveat', 'Golos Text', cursive; font-size: 31px; font-weight: 700; line-height: 1; color: #E05E1F;">что умеет</div>
-        <div style="margin-top: 4px; font-family: 'Onest', sans-serif; font-size: 29px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #25252A;">stories мастер</div>
-        <svg width="174" height="11" viewBox="0 0 150 10" style="margin-top: 5px;"><path d="M3 7 C 40 2, 108 2, 147 5" stroke="#E05E1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+  <!-- ПРИВЕТ, Я КЛОДИК (светлый блок на бумаге) -->
+  <div style="background: #25252A; padding: 0 0 70px 0; overflow: hidden;">
+  <div style="position: relative; padding: 56px 22px 54px 22px;">
+    <div class="paper white"></div>
+    <div style="position: relative; color: #25252A;">
+    <div style="display: flex; align-items: flex-end; gap: 4px;">
+      <div style="flex: 1 1 auto; min-width: 0;">
+        <div class="hand" style="font-size: 42px; color: #E05E1F; transform: rotate(-4deg); transform-origin: left center;">привет,</div>
+        <div style="margin-top: 6px; font-family: 'Onest', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: #25252A; white-space: nowrap;">я Клодик!</div>
       </div>
-      <div style="position: absolute; top: 27.5%; left: 20%; right: 20%; bottom: 18%; overflow: hidden; z-index: 2;">
+      <img src="klodik-wave.webp" alt="" style="width: 140px; flex: 0 0 auto; margin-right: -6px; margin-bottom: -10px;">
+    </div>
+    <div class="p-dark" style="margin-top: 22px;">Я живу в приложении <b style="color: #E05E1F;">stories мастер</b> и пишу сценарии сторис: личные, экспертные, продающие и вовлекающие.</div>
+    <div class="p-dark" style="margin-top: 14px;">Пишу их <span class="mark">именно под тебя</span>: под твой блог, твою нишу и твою аудиторию, твоим голосом и с твоими смыслами. Получаются истории, которые цепляют и которые хочется досмотреть до конца. Пишу не наугад, а по специальной методологии сторителлинга.</div>
+    <div class="p-dark" style="margin-top: 14px;">Как это работает: ты наговариваешь мне голосом или пишешь, что у тебя происходит, а я собираю из этого готовый сторителлинг или прогрев на 3, 7 или 14 дней.</div>
+
+    <!-- ТЕЛЕФОН СО СКРИНАМИ -->
+    <div style="margin-top: 40px;">
+      <div class="h2">вот как я выгляжу <br>в твоём Telegram</div>
+      <div class="p-dark" style="margin-top: 10px;">Ничего скачивать не нужно: я открываюсь прямо в Telegram, как мини-приложение.</div>
+    </div>
+    <div style="position: relative; width: 340px; margin: 14px auto 0 auto;">
+      <div style="position: absolute; left: 7.22%; right: 7.44%; top: 3.16%; bottom: 3.38%; overflow: hidden; z-index: 1; border-radius: 42px; background: #FBFAF8;">
+        <div style="position: absolute; left: 0; right: 0; top: 6.3%; bottom: 0;">
         <div class="slides">
-          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ГОЛОСОВАЯ РАСПАКОВКА</div>
-            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Приложение задаёт вопросы, а ты отвечаешь голосом — никаких анкет на миллион пунктов. <br><br>Из ответов складывается твой профиль.</div>
-          </div>
-          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">СЦЕНАРИИ СТОРИС НА КАЖДЫЙ ДЕНЬ</div>
-            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Приложение само пишет сторителлинги — личные, экспертные, продающие и вовлекающие. <br><br>С теми смыслами, которые ты хочешь донести, и на языке твоей аудитории — про её боли, желания и сомнения.</div>
-          </div>
-          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">КОНТЕНТ-ПЛАН ИЗ «КАШИ МЫСЛЕЙ»</div>
-            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Составляет контент-план на неделю, две, три или четыре. <br><br>Просто вываливаешь все свои мысли в приложение — и получаешь структурный план выходов в сторис с готовыми сценариями. Двадцать тем в голове превращаются в контент на недели вперёд.</div>
-          </div>
-          <div style="width: 25%; box-sizing: border-box; padding: 0 11px; display: flex; flex-direction: column; justify-content: flex-start;">
-            <div style="font-family: 'Onest', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.15; color: #C1573B; letter-spacing: -0.02em; overflow-wrap: break-word; letter-spacing: -0.01em;">ПРОГРЕВ ПОД ЗАПУСК</div>
-            <div style="margin-top: 13px; font-size: 16px; line-height: 1.42; color: #4A463F;">Собирает прогрев на 3, 7 и 14 дней по специальной структуре и пишет сценарии, которые превращают подписчика в клиента.</div>
-            </div>
-          </div>
+          <img src="screen-1.jpg?v=4" alt="Экран знакомства: привет, я Клодик">
+          <img src="screen-2.jpg?v=4" alt="Главный экран: что сегодня расскажем в сторис">
+          <img src="screen-3.jpg?v=4" alt="Распаковка: вопросы для карты блога">
+          <img src="screen-4.jpg?v=4" alt="Прогрев на несколько дней">
+          <img src="screen-5.jpg?v=4" alt="Готовый сценарий: день 1 прогрева">
+          <img src="screen-6.jpg?v=4" alt="Готовый сценарий: конец дня 1">
         </div>
-      <div style="position: absolute; bottom: 13%; left: 20%; right: 20%; z-index: 3; display: flex; justify-content: center; gap: 6px;">
-          <div class="dot" style="animation-delay: 0s;"></div>
-          <div class="dot" style="animation-delay: -12s;"></div>
-          <div class="dot" style="animation-delay: -8s;"></div>
-          <div class="dot" style="animation-delay: -4s;"></div>
+        </div>
       </div>
-      <img src="phone-screen.png" style="display: block; width: 100%; position: relative; z-index: 1;">
+      <img src="phone-frame.png" alt="" style="display: block; width: 100%; position: relative; z-index: 2; filter: drop-shadow(0 18px 30px rgba(0,0,0,.28));">
     </div>
+    <div style="margin-top: 4px; display: flex; justify-content: center; gap: 6px;">
+      <div class="dot on-paper" style="animation-delay: 0s;"></div>
+      <div class="dot on-paper" style="animation-delay: -20s;"></div>
+      <div class="dot on-paper" style="animation-delay: -16s;"></div>
+      <div class="dot on-paper" style="animation-delay: -12s;"></div>
+      <div class="dot on-paper" style="animation-delay: -8s;"></div>
+      <div class="dot on-paper" style="animation-delay: -4s;"></div>
     </div>
 
+    </div>
+  </div>
+  </div>
+
+  <!-- ЧТО Я УМЕЮ (тёмный блок) -->
+  <div style="background: #25252A; padding: 0 20px 46px 20px; color: #FBFAF8;">
+    <div class="h2 light">что я <span class="hand" style="font-size: 1.3em;">умею</span></div>
+    <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 10px;">
+      <div class="feat"><div class="feat-n">1</div><div><div class="feat-t">РАСПАКОВКА ГОЛОСОМ</div><div class="feat-p">Задаю несколько вопросов, ты отвечаешь голосом — никаких анкет на миллион пунктов. Из ответов собираю карту твоего блога: темы, смыслы, аудиторию и манеру речи.</div></div></div>
+      <div class="feat"><div class="feat-n">2</div><div><div class="feat-t">СЦЕНАРИИ СТОРИС НА КАЖДЫЙ ДЕНЬ</div><div class="feat-p">Пишу сторителлинги — личные, экспертные, продающие и вовлекающие. Про боли, желания и сомнения твоей аудитории, её языком.</div></div></div>
+      <div class="feat"><div class="feat-n">3</div><div><div class="feat-t">РАЗБОР «КАШИ СМЫСЛОВ»</div><div class="feat-p">Наговори всё, что крутится в голове, а я разложу это по сторис. Двадцать мыслей вперемешку превращаются в понятные выходы.</div></div></div>
+      <div class="feat"><div class="feat-n">4</div><div><div class="feat-t">ПРОГРЕВ ПОД ЗАПУСК</div><div class="feat-p">Собираю прогрев на 3, 7 или 14 дней по специальной структуре и пишу сценарии, которые превращают подписчика в клиента.</div></div></div>
+    </div>
+    <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" class="btn white" style="margin-top: 26px;">попробовать бесплатно прямо сейчас</a>
+    <div class="btn-sub">напиши свой первый сценарий</div>
+  </div>
+
+  <!-- БЕГУЩАЯ СТРОКА ОБРАТНО -->
   <div style="background: #25252A; padding: 4px 0 26px 0; overflow: hidden;">
     <div style="background: #E05E1F; padding: 14px 0; overflow: hidden; transform: rotate(1.2deg); width: 420px; margin-left: -15px;">
       <div class="ticker-track-back">
-        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
-          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #25252A; white-space: nowrap;">
-          <span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-          <span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><span style="display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle;"></span>
-        </div>
+        <div class="ticker-row"><span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><i></i><span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><i></i><span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><i></i></div>
+        <div class="ticker-row"><span>СЦЕНАРИИ СТОРИС ЗА ПАРУ МИНУТ</span><i></i><span>ПРОГРЕВЫ БЕЗ ДАВЛЕНИЯ И МАНИПУЛЯЦИЙ</span><i></i><span>СМЫСЛЫ, КОТОРЫЕ ПРОДАЮТ</span><i></i></div>
       </div>
     </div>
   </div>
 
   <div style="background: #25252A; color: #FBFAF8;">
-  <div style="padding: 10px 20px 46px 20px;">
-    <div style="position: relative; width: 290px; margin-left: auto; margin-right: auto;">
-      <div style="transform: rotate(-2deg); background: #FFFFFF; border: 1px solid rgba(251,250,248,0.18); box-shadow: 0 12px 32px rgba(51,42,34,.10), 0 3px 9px rgba(51,42,34,.05); padding: 8px 8px 26px 8px;">
-        <img src="juliya2.jpg" style="display: block; width: 100%; height: 320px; object-fit: cover;">
-      </div>
-      <div style="position: absolute; bottom: 2px; right: -8px; transform: rotate(3deg); background: #F9E4D4; border-radius: 6px; padding: 5px 12px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #C1573B;">@JULIYA.LIPA</div>
-    </div>
-    <div style="margin-top: 20px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Я Юлия Липецкая, контент-маркетолог. Пять лет каждый день пишу сценарии сторис и прогревы для бизнесов и блогов в Instagram.</div>
-    <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">А ещё я занимаюсь нейросетями: сама собираю приложения и ботов, которые снимают с эксперта рутину. <span style="color: #E05E1F;"><b>stories мастер</b></span> родился ровно на стыке этих двух вещей — методики и технологии.</div>
-    <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">За годы работы у меня собралась база: какие истории цепляют и как их рассказывать, чтобы человек сам дошёл до покупки. Эту методику я и загрузила в нейросеть.</div>
-    <div style="margin-top: 14px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Поэтому внутри приложения нейросеть пишет не как ей вздумается, а по моей системе.</div>
-    
-    
-  </div>
 
+  <!-- ЧТО ГОВОРЯТ (на бумаге) -->
+  <div style="position: relative; margin-top: 8px; padding: 56px 22px 54px 22px;">
+    <div class="paper"></div>
+    <div style="position: relative; color: #25252A;">
+    <div class="hand" style="transform: rotate(-7deg); transform-origin: left center; font-size: 62px;">что говорят</div>
+    <div class="h2" style="margin-top: 10px;">те, кто уже пишут <br>сторис со мной</div>
 
-  <div style="padding: 56px 20px 46px 20px;">
-    <div style="margin-top: 20px; transform: rotate(-7deg); transform-origin: left center; font-family: 'Caveat', 'Golos Text', cursive; font-size: 62px; font-weight: 700; line-height: 1; color: #FF6A1F">отзывы</div>
-    <div style="margin-top: 10px; font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14;">методика работает <br>в разных нишах</div>
-    
-    <div style="margin-top: 22px; height: 236px; overflow: hidden;">
-      <div class="rev-track">
-        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
-          <div class="rev-paper">
-            <div class="rev-bg"></div>
-            <img src="tape-a-cut.png" style="position: absolute; top: -13px; left: 49%; width: 112px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(-3.5deg); z-index: 2; pointer-events: none;">
-            <div class="rev-inner">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">А</div>
-                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Алина <span style="font-weight: 500; color: #8C8477;">· нумеролог</span></div>
-              </div>
-              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;">Я узнала очень много возражений и своих упущений, <b>ещё я продала два разбора из этих сторис!!</b> Я в шоке</div>
-            </div>
-          </div>
-        </div>
-        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
-          <div class="rev-paper">
-            <div class="rev-bg"></div>
-            <img src="tape-c.png" style="position: absolute; top: -12px; left: 52%; width: 110px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(5deg); z-index: 2; pointer-events: none;">
-            <div class="rev-inner">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">С</div>
-                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Света <span style="font-weight: 500; color: #8C8477;">· остеопат</span></div>
-              </div>
-              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;"><b>Охваты, кстати, у меня поднялись в два раза))</b> Благодарю за грамотное, простыми словами, объяснение)</div>
-            </div>
-          </div>
-        </div>
-        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
-          <div class="rev-paper">
-            <div class="rev-bg"></div>
-            <img src="tape-c.png" style="position: absolute; top: -12px; left: 48%; width: 110px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(-5deg); z-index: 2; pointer-events: none;">
-            <div class="rev-inner">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">А</div>
-                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Андрей <span style="font-weight: 500; color: #8C8477;">· тренер</span></div>
-              </div>
-              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;">После вчерашней сторис <b>ко мне записалась одна мама с дочкой!</b> Два месяца наблюдала — сегодня решилась</div>
-            </div>
-          </div>
-        </div>
-        <div style="width: 25%; box-sizing: border-box; padding: 20px 5px 0 5px;">
-          <div class="rev-paper">
-            <div class="rev-bg"></div>
-            <img src="tape-a-cut.png" style="position: absolute; top: -12px; left: 52%; width: 110px; height: auto; object-fit: contain; transform: translateX(-50%) rotate(3deg); z-index: 2; pointer-events: none;">
-            <div class="rev-inner">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 30px; height: 30px; border-radius: 999px; background: #E9D9BC; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; color: #C1573B;">Е</div>
-                <div style="font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;">Елена <span style="font-weight: 500; color: #8C8477;">· дизайнер</span></div>
-              </div>
-              <div style="margin-top: 10px; font-size: 14px; line-height: 1.55;">Урааа!! <b>У меня первый с инсты клиент</b></div>
-              <div style="margin-top: 8px; background: #F0DCC0; border-radius: 14px 4px 14px 14px; padding: 10px 12px; font-size: 13px; line-height: 1.5; margin-left: 34px;">Это просто супер!!! Поздравляю</div>
-              <div style="margin-top: 4px; font-size: 11px; color: #8C8477; text-align: right;">— ответ Юлии</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="card" style="margin-top: 24px; padding: 14px;">
+    <div class="rev-win" id="revWin">
+      <img class="shot" src="review-1.jpg" alt="Отзыв: сделала сторис, ввела в конце к продаже, и как результат 3 продажи">
+      <img class="shot" src="review-2.jpg" alt="Отзыв: разместила сторис по его сценарию, это очень круто и не было моих мучений">
+      <img class="shot" src="review-3.jpg" alt="Отзыв: приложение замечательное, времени и сил меньше">
+      <img class="shot" src="review-4.jpg" alt="Отзыв: понравилась структура сторитела и слова, простые, без намёка на ИИ">
+      <img class="shot" src="review-5.jpg" alt="Отзыв: простую жизненную ситуацию связал с контекстом моей экспертности">
     </div>
-    <div style="margin-top: 16px; display: flex; justify-content: center; gap: 6px;">
-      <div class="revdot" style="animation-delay: 0s;"></div>
-      <div class="revdot" style="animation-delay: -13.5s;"></div>
-      <div class="revdot" style="animation-delay: -9s;"></div>
-      <div class="revdot" style="animation-delay: -4.5s;"></div>
+    <div id="revDots" style="margin-top: 2px; display: flex; justify-content: center; gap: 6px;">
+      <div class="rdot on"></div><div class="rdot"></div><div class="rdot"></div><div class="rdot"></div><div class="rdot"></div>
+    </div>
+    <div style="margin-top: 8px; text-align: center; font-size: 13px; color: #8A847A;">листай вбок →</div>
+    </div>
+    <script>
+      (function(){
+        var win=document.getElementById('revWin'), dots=document.getElementById('revDots').children, n=dots.length, i=0, timer, stopped=false;
+        function step(){ return win.children[1].offsetLeft - win.children[0].offsetLeft; }
+        function mark(k){ for(var j=0;j<n;j++){ dots[j].className = 'rdot' + (j===k ? ' on' : ''); } }
+        win.addEventListener('scroll', function(){ i=Math.round(win.scrollLeft/step()); mark(Math.max(0,Math.min(n-1,i))); }, {passive:true});
+        function stop(){ stopped=true; clearInterval(timer); }
+        ['touchstart','pointerdown','wheel'].forEach(function(e){ win.addEventListener(e, stop, {passive:true}); });
+        timer=setInterval(function(){ if(stopped) return; i=(i+1)%n; win.scrollTo({left:i*step(), behavior:'smooth'}); }, 5000);
+      })();
+    </script>
+
+    <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" class="btn orange" style="margin-top: 28px;">хочу так же</a>
+    <div class="say" style="margin-top: 14px;">
+      <img src="klodik-applaud.webp" alt="">
+      <div class="bubble">Следующий отзыв может быть твоим)</div>
+    </div>
     </div>
   </div>
 
-  <div style="padding: 56px 20px 46px 20px;">
-    <div style="margin-top: 20px; font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em;">сколько <span style="position: relative; display: inline-block;">это стоит<svg width="132" height="8" viewBox="0 0 132 8" style="position: absolute; left: 0; bottom: -4px;"><path d="M2 5 C 34 2, 94 2, 130 4" stroke="#E05E1F" stroke-width="2.2" fill="none" stroke-linecap="round"></path></svg></span></div>
+  <!-- ЦЕНА -->
+  <div style="padding: 36px 20px 46px 20px;">
+    <div class="h2">сколько <span style="position: relative; display: inline-block;">это стоит<svg width="132" height="8" viewBox="0 0 132 8" style="position: absolute; left: 0; bottom: -4px;"><path d="M2 5 C 34 2, 94 2, 130 4" stroke="#E05E1F" stroke-width="2.2" fill="none" stroke-linecap="round"></path></svg></span></div>
     <div style="margin-top: 24px;">
-      <div style="background: rgba(251,250,248,0.08); border: 1px solid rgba(251,250,248,0.22); border-radius: 18px; padding: 26px 22px 24px 22px;">
+      <div style="position: relative; background: rgba(251,250,248,0.08); border: 1px solid rgba(251,250,248,0.22); border-radius: 18px; padding: 26px 22px 24px 22px;">
+        <div style="position: absolute; top: -12px; right: 6px; transform: rotate(4deg); background: #FBF4EC; border: 2px solid #E05E1F; border-radius: 18px; padding: 7px 10px 8px 10px; width: 164px; text-align: center; font-family: 'Onest', sans-serif; line-height: 1.25; color: #25252A; box-shadow: 0 8px 20px rgba(0,0,0,.3);"><div style="font-size: 11.5px; font-weight: 800; white-space: nowrap; color: #E05E1F;">☕ 2,4 рубля за сценарий</div><div style="margin-top: 2px; font-size: 10px; font-weight: 500; color: #6B655C;">по цене чашечки капучино</div></div>
         <div style="font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #E05E1F;">ПОДПИСКА</div>
         <div style="margin-top: 10px; display: flex; align-items: baseline; gap: 7px;">
-          <div style="font-family: 'Onest', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">[ЦЕНА] BYN</div>
+          <div style="font-family: 'Onest', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">48 BYN</div>
           <div style="font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 600; color: rgba(251,250,248,0.62);">/ мес</div>
         </div>
-        <div style="margin-top: 6px; font-size: 13px; color: rgba(251,250,248,0.55);">отменить можно в любой момент</div>
+        <div style="margin-top: 10px; font-size: 13px; color: rgba(251,250,248,0.55);">без автосписаний — продлеваешь сама, когда захочешь</div>
         <div style="margin-top: 20px; height: 1px; background: rgba(251,250,248,0.14);"></div>
         <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 9px;">
-          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">распаковка и личный профиль</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">распаковка: карта твоего блога</div></div>
           <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">20 сценариев в месяц</div></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">планы прогрева на 3, 7 и 14 дней</div></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">контент-планы из «каши смыслов»</div></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">правки без ограничений</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">прогревы на 3, 7 и 14 дней</div></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E6B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 7"></path></svg><div style="font-size: 14px;">разбор «каши смыслов»: наговорил — получил сторис</div></div>
         </div>
-        <a href="https://t.me/Juliya_Lipetskaya" target="_blank" rel="noopener" style="margin-top: 22px; height: 52px; background: #E05E1F; border-radius: 999px; display: flex; text-decoration: none; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #FBFAF8;">оформить подписку</a>
+        <a href="https://t.me/stories_master_bot?start=pay" target="_blank" rel="noopener" class="btn orange" style="margin-top: 22px; height: 52px;">оформить подписку</a>
+        <div style="margin-top: 10px; text-align: center; font-size: 12px; color: rgba(251,250,248,0.5);">кнопка откроет меня в Telegram, оплатить можно прямо там</div>
       </div>
       <div style="margin-top: 22px; position: relative; background: #F9E4D4; border: 2px solid #E05E1F; border-radius: 18px; padding: 26px 22px 24px 22px; color: #25252A; box-shadow: 0 16px 36px rgba(0,0,0,.34);">
         <div style="position: absolute; top: -13px; left: 20px; background: #E05E1F; border-radius: 999px; padding: 5px 14px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #FBFAF8;">БЕЗ ОПЛАТЫ</div>
         <div style="transform: rotate(-5deg); transform-origin: left center; font-family: 'Caveat', 'Golos Text', cursive; font-size: 38px; font-weight: 700; line-height: 1; color: #E05E1F; white-space: nowrap;">попробуй бесплатно</div>
         <div style="margin-top: 16px; font-family: 'Onest', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2;">3 готовых сценария на пробу</div>
-        <div style="margin-top: 8px; font-size: 14px; line-height: 1.55; color: #5A554C;">Карта не нужна, подписку оформлять не надо. Просто посмотри, какие сценарии получаются, и реши сама.</div>
-        <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" style="margin-top: 20px; height: 52px; background: #25252A; border-radius: 999px; display: flex; text-decoration: none; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #FBFAF8;">попробовать бесплатно</a>
+        <div style="margin-top: 8px; font-size: 14px; line-height: 1.55; color: #5A554C;">Подписку оформлять не надо. Просто посмотри, какие сценарии у нас получаются, и реши сама.</div>
+        <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" class="btn ink" style="margin-top: 20px; height: 52px;">попробовать бесплатно</a>
       </div>
     </div>
     <div style="margin-top: 20px; font-size: 12px; color: rgba(251,250,248,0.45);">*все расчёты производятся в белорусских рублях</div>
   </div>
 
+  <!-- О ЮЛИИ -->
+  <div style="padding: 36px 20px 46px 20px;">
+    <div class="hand" style="transform: rotate(-4deg); transform-origin: left center; font-size: 40px;">а придумала меня</div>
+    <div class="h2" style="margin-top: 8px;">Юлия Липецкая</div>
+    <div style="position: relative; width: 290px; margin: 26px auto 0 auto;">
+      <div style="transform: rotate(-2deg); background: #FFFFFF; border: 1px solid rgba(251,250,248,0.18); box-shadow: 0 12px 32px rgba(51,42,34,.10), 0 3px 9px rgba(51,42,34,.05); padding: 8px 8px 26px 8px;">
+        <img src="juliya2.jpg" style="display: block; width: 100%; height: 320px; object-fit: cover;">
+      </div>
+      <div style="position: absolute; bottom: 2px; right: -8px; transform: rotate(3deg); background: #F9E4D4; border-radius: 6px; padding: 5px 12px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #C1573B;">@JULIYA.LIPA</div>
+    </div>
+    <div class="muted" style="margin-top: 20px;">Я Юлия Липецкая, контент-маркетолог. Пять лет каждый день пишу сценарии сторис и прогревы для бизнесов и блогов в Instagram.</div>
+    <div class="muted" style="margin-top: 14px;">А ещё я занимаюсь нейросетями: сама собираю приложения и ботов, которые снимают с эксперта рутину. <span style="color: #E05E1F;"><b>stories мастер</b></span> и Клодик родились ровно на стыке этих двух вещей — методики и технологии.</div>
+    <div class="muted" style="margin-top: 14px;">За годы работы у меня собралась база: какие истории цепляют и как их рассказывать, чтобы человек сам дошёл до покупки. Эту методику я и загрузила в нейросеть.</div>
+    <div class="muted" style="margin-top: 14px;">Поэтому Клодик пишет не как ему вздумается, а по моей системе.</div>
+  </div>
+
+  <!-- ЧАСТЫЕ ВОПРОСЫ -->
   <div style="padding: 10px 0 54px 0;">
     <div style="position: relative; padding: 60px 22px 58px 22px;">
       <div class="paper"></div>
       <div style="position: relative;">
-        <div style="font-family: 'Onest', sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.14; color: #25252A;">частые <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">вопросы</span></div>
+        <div class="h2" style="color: #25252A;">что меня обычно <span style="font-family: 'Caveat', 'Golos Text', cursive; font-size: 1.3em; font-weight: 700; color: #E05E1F; letter-spacing: 0;">спрашивают</span></div>
         <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
           <details class="faq-item">
             <summary><span class="faq-q">Тексты будут звучать «как нейросеть»?</span><span class="faq-plus"></span></summary>
-            <div class="faq-a">Нет. Приложение пишет по твоей распаковке — твоими словами и историями, а каждый текст проходит фильтр живой речи. Не понравилась фраза — попроси переписать.</div>
+            <div class="faq-a">Нет. Я пишу по твоей распаковке — твоими словами и историями, а каждый текст прогоняю через фильтр живой речи. Не понравилась фраза — попроси, перепишу.</div>
           </details>
           <details class="faq-item">
             <summary><span class="faq-q">У меня маленький блог — есть ли смысл?</span><span class="faq-plus"></span></summary>
-            <div class="faq-a">Да. Методика построена на доверии, а не на охватах: ученицы получали заявки и со 100 подписчиками.</div>
+            <div class="faq-a">Да. Методика построена на доверии, а не на охватах: ученицы Юлии получали заявки и со 100 подписчиками.</div>
           </details>
           <details class="faq-item">
             <summary><span class="faq-q">Не люблю голосовые — что делать?</span><span class="faq-plus"></span></summary>
-            <div class="faq-a">Отвечай текстом — приложение умеет и так. Голос просто быстрее и живее.</div>
+            <div class="faq-a">Пиши текстом, я умею и так. Голос просто быстрее и живее.</div>
           </details>
           <details class="faq-item">
             <summary><span class="faq-q">Сколько времени это займёт?</span><span class="faq-plus"></span></summary>
@@ -334,18 +365,20 @@
             <summary><span class="faq-q">Подходит для любой ниши?</span><span class="faq-plus"></span></summary>
             <div class="faq-a">Да. Методика держится не на нише, а на твоих историях и смыслах — поэтому одинаково работает и у эксперта, и у мастера, и у магазина. Среди отзывов выше — нумеролог, остеопат, тренер и дизайнер.</div>
           </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">Что будет после трёх бесплатных сценариев?</span><span class="faq-plus"></span></summary>
+            <div class="faq-a">Я предложу подписку: 48 рублей в месяц за 20 сценариев. Без автосписаний — продлеваешь сама, когда захочешь.</div>
+          </details>
         </div>
       </div>
     </div>
   </div>
 
-  
-
+  <!-- СОМНЕВАЕШЬСЯ -->
   <div style="padding: 30px 20px 8px 20px;">
     <div style="display: flex; align-items: flex-start; gap: 16px;">
       <div style="position: relative; flex: 0 0 auto; width: 156px; margin-left: -52px; transform: rotate(-3deg); background: #FBFAF8; padding: 6px 6px 16px 6px; box-shadow: 0 14px 32px rgba(0,0,0,.45);">
         <img src="juliya3.jpg" style="display: block; width: 100%; height: 176px; object-fit: cover; object-position: top right;">
-        
       </div>
       <div style="flex: 1 1 auto; padding-top: 10px;">
         <div style="font-family: 'Onest', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; color: rgba(251,250,248,0.8);">сомневаешься,<br>подойдёт ли тебе</div>
@@ -353,16 +386,16 @@
         <svg width="176" height="9" viewBox="0 0 176 9" style="margin-top: 5px;"><path d="M3 6 C 46 2, 128 2, 173 5" stroke="#E05E1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
       </div>
     </div>
-    <div style="margin-top: 18px; font-size: 15px; line-height: 1.6; color: rgba(251,250,248,0.78);">Расскажи, чем занимаешься, — я посмотрю твой блог и честно скажу, подойдёт тебе приложение или нет. А если подойдёт, сразу напишу, с чего начать и какие сторис в твоей нише работают лучше всего.</div>
-    <a href="https://t.me/Juliya_Lipetskaya" target="_blank" rel="noopener" style="margin-top: 18px; height: 52px; background: #E05E1F; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-family: 'Onest', sans-serif; font-size: 16px; font-weight: 700; color: #FBFAF8; text-decoration: none;">написать Юле</a>
-    
+    <div class="muted" style="margin-top: 18px;">Расскажи, чем занимаешься, — я посмотрю твой блог и честно скажу, подойдёт тебе приложение или нет. А если подойдёт, сразу напишу, с чего начать и какие сторис в твоей нише работают лучше всего.</div>
+    <a href="https://t.me/Juliya_Lipetskaya" target="_blank" rel="noopener" class="btn orange" style="margin-top: 18px; height: 52px;">написать Юле</a>
   </div>
 
+  <!-- ПОДВАЛ -->
   <div style="padding: 8px 20px 34px 20px; border-top: 1px solid rgba(251,250,248,0.14); margin: 0 20px;">
     <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
-      <div style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Публичная оферта</div>
-      <div style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Оплата, порядок оказания услуг и возврат</div>
-      <div style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Политика персональных данных</div>
+      <a href="oferta.html" style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Публичная оферта</a>
+      <a href="oferta.html" style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Оплата, порядок оказания услуг и возврат</a>
+      <a href="politika.html" style="font-size: 13px; font-weight: 500; color: rgba(251,250,248,0.68); text-decoration: underline;">Политика персональных данных</a>
     </div>
     <div style="margin-top: 16px; font-size: 12px; color: rgba(251,250,248,0.45); line-height: 1.7;">Самозанятая Липецкая Юлия<br>УНП СА8580604<br>г. Витебск, Московский, 13-2<br>Республика Беларусь<br><a href="mailto:juliuya23@gmail.com" style="color: rgba(251,250,248,0.68); text-decoration: underline;">juliuya23@gmail.com</a> · @juliya.lipa</div>
   </div>
