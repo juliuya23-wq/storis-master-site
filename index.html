@@ -25,10 +25,12 @@
     .ticker-row i { display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #FBFAF8; vertical-align: middle; }
     @keyframes writeIn { from { clip-path: inset(-18% 100% -18% 0); } to { clip-path: inset(-18% -6% -18% 0); } }
     .write-line { clip-path: inset(-18% 100% -18% 0); animation: writeIn 2.9s cubic-bezier(.42,.04,.32,1) forwards; }
-    .paper { position: absolute; left: -16px; right: -16px; top: 0; bottom: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)' opacity='0.28'/%3E%3C/svg%3E"); box-shadow: 0 14px 34px rgba(0,0,0,.34); }
-    .paper::before, .paper::after { content: ""; position: absolute; left: 0; right: 0; height: 30px; background-color: inherit; background-image: inherit; filter: url(#torn); }
-    .paper::before { top: -13px; }
-    .paper::after { bottom: -13px; }
+    .paper { position: absolute; left: -16px; right: -16px; top: 0; bottom: 0; background-color: #F7F1E1; background-image: radial-gradient(120% 90% at 15% 0%, rgba(120,95,60,0.07), rgba(120,95,60,0) 60%), url(grain.png); background-size: auto, 128px 128px; box-shadow: 0 14px 34px rgba(0,0,0,.34); }
+    .paper::before, .paper::after { content: ""; position: absolute; left: 0; right: 0; height: 30px; background: url(torn-top-paper.png) repeat-x left top / 390px 30px; }
+    .paper::before { top: -24px; }
+    .paper::after { bottom: -24px; background-image: url(torn-bottom-paper.png); }
+    .paper.white::before { background-image: url(torn-top-white.png); }
+    .paper.white::after { background-image: url(torn-bottom-white.png); }
     @keyframes slides { 0%, 13.5% { transform: translateX(0); } 16.667%, 30.2% { transform: translateX(-16.667%); } 33.333%, 46.8% { transform: translateX(-33.333%); } 50%, 63.5% { transform: translateX(-50%); } 66.667%, 80.2% { transform: translateX(-66.667%); } 83.333%, 96.8% { transform: translateX(-83.333%); } 100% { transform: translateX(0); } }
     .slides { display: flex; width: 600%; height: 100%; animation: slides 24s cubic-bezier(.75,0,.25,1) infinite; }
     .slides img { width: 16.6667%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -110,7 +112,6 @@
 <body>
 <div class="page">
 
-<svg width="0" height="0" style="position: absolute;" aria-hidden="true"><filter id="torn" x="-6%" y="-12%" width="112%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.016 0.004" numOctaves="3" seed="4" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></svg>
 
   <!-- ШАПКА -->
   <div style="background: #25252A; padding: 0 20px 42px 20px; position: relative; overflow: hidden;">
@@ -202,12 +203,12 @@
       <div style="position: absolute; left: 7.22%; right: 7.44%; top: 3.16%; bottom: 3.38%; overflow: hidden; z-index: 1; border-radius: 42px; background: #FBFAF8; box-shadow: 0 18px 30px rgba(0,0,0,.28);">
         <div style="position: absolute; left: 0; right: 0; top: 6.3%; bottom: 0;">
         <div class="slides">
-          <img loading="lazy" decoding="async" src="screen-1.jpg?v=4" alt="Экран знакомства: привет, я Клодик">
-          <img loading="lazy" decoding="async" src="screen-2.jpg?v=4" alt="Главный экран: что сегодня расскажем в сторис">
-          <img loading="lazy" decoding="async" src="screen-3.jpg?v=4" alt="Распаковка: вопросы для карты блога">
-          <img loading="lazy" decoding="async" src="screen-4.jpg?v=4" alt="Прогрев на несколько дней">
-          <img loading="lazy" decoding="async" src="screen-5.jpg?v=4" alt="Готовый сценарий: день 1 прогрева">
-          <img loading="lazy" decoding="async" src="screen-6.jpg?v=4" alt="Готовый сценарий: конец дня 1">
+          <img src="screen-1.jpg?v=4" alt="Экран знакомства: привет, я Клодик">
+          <img src="screen-2.jpg?v=4" alt="Главный экран: что сегодня расскажем в сторис">
+          <img src="screen-3.jpg?v=4" alt="Распаковка: вопросы для карты блога">
+          <img src="screen-4.jpg?v=4" alt="Прогрев на несколько дней">
+          <img src="screen-5.jpg?v=4" alt="Готовый сценарий: день 1 прогрева">
+          <img src="screen-6.jpg?v=4" alt="Готовый сценарий: конец дня 1">
         </div>
         </div>
       </div>
@@ -260,11 +261,11 @@
 
     <div class="card" style="margin-top: 24px; padding: 14px;">
     <div class="rev-win" id="revWin">
-      <img loading="lazy" decoding="async" class="shot" src="review-1.jpg" alt="Отзыв: сделала сторис, ввела в конце к продаже, и как результат 3 продажи">
-      <img loading="lazy" decoding="async" class="shot" src="review-2.jpg" alt="Отзыв: разместила сторис по его сценарию, это очень круто и не было моих мучений">
-      <img loading="lazy" decoding="async" class="shot" src="review-3.jpg" alt="Отзыв: приложение замечательное, времени и сил меньше">
-      <img loading="lazy" decoding="async" class="shot" src="review-4.jpg" alt="Отзыв: понравилась структура сторитела и слова, простые, без намёка на ИИ">
-      <img loading="lazy" decoding="async" class="shot" src="review-5.jpg" alt="Отзыв: простую жизненную ситуацию связал с контекстом моей экспертности">
+      <img class="shot" src="review-1.jpg" width="780" height="476" alt="Отзыв: сделала сторис, ввела в конце к продаже, и как результат 3 продажи">
+      <img class="shot" loading="lazy" src="review-2.jpg" width="780" height="538" alt="Отзыв: разместила сторис по его сценарию, это очень круто и не было моих мучений">
+      <img class="shot" loading="lazy" src="review-3.jpg" width="780" height="466" alt="Отзыв: приложение замечательное, времени и сил меньше">
+      <img class="shot" loading="lazy" src="review-4.jpg" width="780" height="456" alt="Отзыв: понравилась структура сторитела и слова, простые, без намёка на ИИ">
+      <img class="shot" loading="lazy" src="review-5.jpg" width="780" height="556" alt="Отзыв: простую жизненную ситуацию связал с контекстом моей экспертности">
     </div>
     <div id="revDots" style="margin-top: 2px; display: flex; justify-content: center; gap: 6px;">
       <div class="rdot on"></div><div class="rdot"></div><div class="rdot"></div><div class="rdot"></div><div class="rdot"></div>
@@ -285,7 +286,7 @@
 
     <a href="https://t.me/stories_master_bot?start=landing" target="_blank" rel="noopener" class="btn orange" style="margin-top: 28px;">хочу так же</a>
     <div class="say" style="margin-top: 14px;">
-      <img loading="lazy" src="klodik-applaud.webp" alt="" width="108" height="162">
+      <img src="klodik-applaud.webp" alt="" width="108" height="162">
       <div class="bubble">Следующий отзыв может быть твоим)</div>
     </div>
     </div>
@@ -330,7 +331,7 @@
     <div class="h2" style="margin-top: 8px;">Юлия Липецкая</div>
     <div style="position: relative; width: 290px; margin: 26px auto 0 auto;">
       <div style="transform: rotate(-2deg); background: #FFFFFF; border: 1px solid rgba(251,250,248,0.18); box-shadow: 0 12px 32px rgba(51,42,34,.10), 0 3px 9px rgba(51,42,34,.05); padding: 8px 8px 26px 8px;">
-        <img loading="lazy" decoding="async" src="juliya2.jpg" style="display: block; width: 100%; height: 320px; object-fit: cover;">
+        <img src="juliya2.jpg" style="display: block; width: 100%; height: 320px; object-fit: cover;">
       </div>
       <div style="position: absolute; bottom: 2px; right: -8px; transform: rotate(3deg); background: #F9E4D4; border-radius: 6px; padding: 5px 12px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #C1573B;">@JULIYA.LIPA</div>
     </div>
@@ -380,7 +381,7 @@
   <div style="padding: 30px 20px 8px 20px;">
     <div style="display: flex; align-items: flex-start; gap: 16px;">
       <div style="position: relative; flex: 0 0 auto; width: 156px; margin-left: -52px; transform: rotate(-3deg); background: #FBFAF8; padding: 6px 6px 16px 6px; box-shadow: 0 14px 32px rgba(0,0,0,.45);">
-        <img loading="lazy" decoding="async" src="juliya3.jpg" style="display: block; width: 100%; height: 176px; object-fit: cover; object-position: top right;">
+        <img src="juliya3.jpg" style="display: block; width: 100%; height: 176px; object-fit: cover; object-position: top right;">
       </div>
       <div style="flex: 1 1 auto; padding-top: 10px;">
         <div style="font-family: 'Onest', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; color: rgba(251,250,248,0.8);">сомневаешься,<br>подойдёт ли тебе</div>
